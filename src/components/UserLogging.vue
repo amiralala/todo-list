@@ -1,16 +1,17 @@
 <script setup>
 import { useUserStore } from "@/stores/user";
 import { onMounted, ref } from "vue";
+
 const userStore = useUserStore();
 
-const logChoice = ref("sign-in");
+const logChoice = ref("");
 const email = ref("");
 const phone = ref("");
 const password = ref("");
 const password2 = ref("");
 
 const onSubmitSignIn = () => {
-        useUserStore.signInUser(email, password);
+        userStore.signInUser(email.value, password.value);
 }
 
 const onSubmitNew = () => {
@@ -21,7 +22,8 @@ const onSubmitNew = () => {
         window.alert("Passwords do not match");
     }
     else {
-        useUserStore.signInUser(email, password);
+        userStore.createNewUser(email.value, password.value);
+        // console.log("user : ", userStore.user.value);
     }
 }
 </script>
@@ -37,15 +39,15 @@ const onSubmitNew = () => {
     </div>
     <!-- </fieldset> -->
 
-    <form v-if="(logChoice === 'sign-in')" @submit="onSubmitSignIn">
+    <div  v-if="(logChoice === 'sign-in')">
         <input type="email" placeholder="Enter your email address" v-model="email" required>
         <br>
         <input type="password" placeholder="Password" v-model="password" required>
         <br>
-        <input type="submit">
-    </form>
+        <button @click="onSubmitSignIn">Sign in</button>
+    </div>
 
-    <form v-if="(logChoice === 'new')" @submit="onSubmitNew">
+    <div v-if="(logChoice === 'new')">
         <input type="email" placeholder="Enter your email address" v-model="email" required>
         <br>
         <input type="tel" placeholder="Enter your phone number" v-model="phone" required>
@@ -54,8 +56,8 @@ const onSubmitNew = () => {
         <br>
         <input type="password" placeholder="Confirm Password" v-model="password2" required>
         <br>
-        <input type="submit">
-    </form>
+        <button @click="onSubmitNew">Register</button>
+    </div>
 </template>
 
 <style></style>
