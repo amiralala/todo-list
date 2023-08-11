@@ -3,10 +3,15 @@ import UserLogging from '../components/UserLogging.vue'
 </script>
 
 <template>
-<h1>My wise TODO List</h1> 
+<h1>My TODO List</h1> 
 <UserLogging></UserLogging>
 
 </template>
 
 <style>
+
+
+h1 {
+    color: rgb(113, 54, 169);
+}
 </style>

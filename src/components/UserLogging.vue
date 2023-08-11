@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 
 const userStore = useUserStore();
 
-const logChoice = ref("");
+const logChoice = ref("sign-in");
 const email = ref("");
 const phone = ref("");
 const password = ref("");
@@ -48,6 +48,8 @@ const onSubmitNew = () => {
     </div>
 
     <div v-if="(logChoice === 'new')">
+        <input type="text" placeholder="Enter your First and Last name" v-model="Text" required>
+        <br>
         <input type="email" placeholder="Enter your email address" v-model="email" required>
         <br>
         <input type="tel" placeholder="Enter your phone number" v-model="phone" required>
