@@ -11,24 +11,31 @@ export const useUserStore = defineStore("userStore", () => {
       password: password,
     });
 
-    if (error) console.log("Error: ", error);
+    if (error) { window.alert(error) }
     else {
       ("Data: ", console.log(data))
       user.value = data;
-      console.log(user);
+      console.log("info user: ", user.value);
     }
   };
 
   const signInUser = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: 'example@email.com',
-      password: 'example-password',
+      email: email,
+      password: password,
     })
-    if (error)  window.alert("Error: ", error);
-    else {
-      ("Data: ", console.log(data))
-      user.value = data;
+    if (error) {
+      window.alert(error);
     }
-  }
-  return {user, createNewUser, signInUser}
+    user.value = data;
+    console.log("user signed in :", user.value);
+    console.log(error);
+  };
+  const signOutUser = async (email, password) => {
+    const { error } = await supabase.auth.signOut();
+    if (error) window.alert("Error: ", error);
+  };
+
+
+  return { user, createNewUser, signInUser, signOutUser }
 })
