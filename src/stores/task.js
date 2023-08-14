@@ -14,6 +14,23 @@ export const useTaskStore = defineStore("taskStore", () => {
     else tasks.value = data;
     console.log("tasks: ", tasks.value);
   }
+  const insertTask = async (title, task_type, is_complete, priority, deadline) => {
+    let rowData = {};
+    rowData.user_id = "a83fca4c-d8c5-4490-8de1-cdca8372fcc0";
+    rowData.title = title;
+    rowData.task_type = task_type;
+    rowData.is_complete = is_complete;
+    rowData.priority = priority;
+    rowData.deadline = deadline;
 
-  return { tasks, fetchTasks }
+    console.log (rowData);
+    const { error } = await supabase
+      .from('tasks')
+      .insert(rowData)
+
+    if (error) console.log("Error: ", error);
+    
+  }
+
+  return { tasks, fetchTasks, insertTask }
 })

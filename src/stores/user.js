@@ -31,7 +31,7 @@ export const useUserStore = defineStore("userStore", () => {
     console.log("user signed in :", user.value);
     console.log(error);
   };
-  const signOutUser = async (email, password) => {
+  const signOutUser = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) window.alert("Error: ", error);
   };
