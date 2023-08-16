@@ -24,7 +24,7 @@ const addTask = () => {
 
 <template>
     <HeaderGeneral></HeaderGeneral>
-    <!-- <button @click="updateList">Update</button> -->
+    <button @click="updateList">Update</button>
     <div>
         <input type="text" placeholder="Add a Task" v-model="title" required>
         <input type="text" placeholder="Task Type" v-model="taskType">

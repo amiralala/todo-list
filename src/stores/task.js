@@ -23,14 +23,24 @@ export const useTaskStore = defineStore("taskStore", () => {
     rowData.priority = priority;
     rowData.deadline = deadline;
 
-    console.log (rowData);
+    console.log(rowData);
     const { error } = await supabase
       .from('tasks')
       .insert(rowData)
 
     if (error) console.log("Error: ", error);
-    
+
   }
 
-  return { tasks, fetchTasks, insertTask }
+  const deleteTask = async (idToDelete) => {
+
+    const { error } = await supabase
+      .from('tasks')
+      .delete()
+      .eq('id', idToDelete);
+
+    if (error) console.log("Error: ", error);
+  }
+
+  return { tasks, fetchTasks, insertTask, deleteTask }
 })
