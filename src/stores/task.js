@@ -42,5 +42,12 @@ export const useTaskStore = defineStore("taskStore", () => {
     if (error) console.log("Error: ", error);
   }
 
-  return { tasks, fetchTasks, insertTask, deleteTask }
+  const changeTask = async (task) => {
+    const { error } = await supabase
+      .from('tasks')
+      .update(task)
+      .eq('id', task.id)
+      if (error) console.log("Error: ", error);
+  }
+  return { tasks, fetchTasks, insertTask, deleteTask, changeTask }
 })

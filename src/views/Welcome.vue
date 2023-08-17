@@ -3,7 +3,8 @@ import UserLogging from '../components/UserLogging.vue'
 </script>
 
 <template>
-<h1>My TODO List</h1> 
+    <Div><img class="logo-todo" src="../images/1692298872046.PNG" alt=""></Div>
+<!-- <h1>My TODO List</h1>  -->
 <UserLogging></UserLogging>
 
 </template>
@@ -11,7 +12,9 @@ import UserLogging from '../components/UserLogging.vue'
 <style>
 
 
-h1 {
-    color: rgb(113, 54, 169);
+.logo-todo{
+    width: 300px;
+    text-align: center;
+
 }
 </style>

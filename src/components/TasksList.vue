@@ -3,15 +3,18 @@ import { useTaskStore } from "@/stores/task";
 const taskStore = useTaskStore();
 import { onMounted } from 'vue'
 
+
 const removeTask = (task) => {
     if (Window.confirm("Are you sure you want to delete this task ?")) {
         taskStore.deleteTask(task.id);
         taskStore.fetchTasks();
     }
-    console.log("remove")
 }
-const editTask = (task) => {
-    console.log("edit")
+
+const checkDeadline = (task) => {
+    const deadline = new Date(task.deadline);
+    console.log("Date : ", Date());
+    return (Date.now()>=deadline);
 }
 
 onMounted(() => {
@@ -32,29 +35,35 @@ onMounted(() => {
             <td>Edit</td>
         </thead>
 
-        <tr v-for="task in taskStore.tasks">
-            <!-- <tr> -->
+        <tr v-for="task in taskStore.tasks" >
             <td>
-                <input type="checkbox" name="done" :checked="task.is_complete">
+                <input type="checkbox" name="done" v-model="task.is_complete">
             </td>
             <td>
-                {{ task.title }}
+                <input type="text" placeholder="Add a Task" v-model="task.title" required
+                :class="{finishedTask: task.is_complete}">
             </td>
 
             <td>
-                {{ task.task_type }}
+                <input type="text" placeholder="Task Type" v-model="task.task_type">
             </td>
             <td>
-                {{ task.priority }}
+                <select name="priority" v-model="task.priority">
+                    <option value="high">Emergency</option>
+                    <option value="medium">Think of it!</option>
+                    <option value="low">Can wait..</option>
+                </select>
             </td>
             <td>
-                {{ task.deadline }}
+                <input type="date" name="" v-model="task.deadline" :class="{'too-late': checkDeadline(task)}">
             </td>
             <td>
-                <img src="../icones/delete1.png" @click=removeTask(task)>
+                <img class="edit-remove" src="../icones/delete1.png">
             </td>
             <td>
-                <img src="../icones/edit1.png" @click=editTask(task)>
+                <router-link :to="{ name: 'taskedit', params: { task_id: task.id } }">
+                    <img class="edit-remove" src="../icones/edit1.png" @click=editTask(task)>
+                </router-link>
             </td>
         </tr>
     </table>
@@ -62,10 +71,34 @@ onMounted(() => {
 
 
 <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: rgb(245, 224, 232);
+}
+
 td {
-    border-style: solid;
-    border-width: 1px;
+    border-style: none;
+
     text-align: center;
     min-width: 100px;
+}
+
+tr {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.edit-remove {
+    width: 40px;
+}
+
+.finishedTask{
+    text-decoration: line-through;
+}
+
+.too-late{
+    background-color: red;
 }
 </style>

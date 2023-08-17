@@ -47,15 +47,15 @@ const onSubmitNew = () => {
     <!-- </fieldset> -->
 
     <div v-if="(logChoice === 'sign-in')">
-        <input type="email" placeholder="Enter your email address" v-model="email" required>
+        <input class="sign" type="email" placeholder="Enter your email address" v-model="email" required>
         <br>
-        <input type="password" placeholder="Password" v-model="password" required>
+        <input class="sign" type="password" placeholder="Password" v-model="password" required>
         <br>
-        <button @click="onSubmitSignIn">Sign in</button>
+        <button class="signIn" @click="onSubmitSignIn">Sign in</button>
     </div>
 
     <div v-if="(logChoice === 'new')">
-        <input type="text" placeholder="Enter your First and Last name" v-model="userName" required>
+        <input  type="text" placeholder="Enter your First and Last name" v-model="userName" required>
         <br>
         <input type="email" placeholder="Enter your email address" v-model="email" required>
         <br>
@@ -69,4 +69,26 @@ const onSubmitNew = () => {
     </div>
 </template>
 
-<style></style>
+<style>
+body {
+    font-size: 20px;
+    margin: 0px 10em 0px 10em;
+    padding: 0;
+    font-family: Roboto;
+    background-color: #F2F4FC;
+}
+.sign {
+    width: 400px;
+    background-color: rgb(254, 224, 230);
+    border: none;
+}
+.signIn{
+    width: 400px;
+    background-color: rgb(232, 181, 189);
+    border: none;
+    color: rgb(130, 16, 67);
+    
+
+}
+
+</style>
