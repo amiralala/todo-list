@@ -13,10 +13,10 @@ const phone = ref("");
 const password = ref("");
 const password2 = ref("");
 
-const onSubmitSignIn = () => {
-    userStore.signInUser(email.value, password.value);
+const onSubmitSignIn = async () => {
+    await userStore.signInUser(email.value, password.value);
     console.log("depuis page sign in ", userStore.user);
-    
+
     router.push('/taskslist')
 }
 
@@ -29,66 +29,67 @@ const onSubmitNew = () => {
     }
     else {
         userStore.createNewUser(email.value, password.value);
-        // router.push("/taskslist")
+        router.push("/taskslist")
         console.log("after creation", userStore.user);
     }
 }
 </script>
 
 <template>
-    <!-- <fieldset> -->
-    <div>
-        <input type="radio" name="log-option" value="new" v-model="logChoice" />
-        <label for="new">Create Account. <span>New to "My Wise TODO List"</span></label>
-    </div>
-    <div><input type="radio" name="log-option" value="sign-in" v-model="logChoice" checked />
-        <label for="sign-in"> Already a User? Sign In.</label>
-    </div>
-    <!-- </fieldset> -->
+    <fieldset>
+        <div class=" signing-choice">
+            <input type="radio" name="log-option" value="new" v-model="logChoice" />
+            <label for="new">New to "My Wise TODO List ? Join us !</label>
+        </div>
+        <div><input type="radio" name="log-option" value="sign-in" v-model="logChoice" checked />
+            <label for="sign-in">Already a User? Sign In !</label>
+        </div>
 
-    <div v-if="(logChoice === 'sign-in')">
-        <input class="sign" type="email" placeholder="Enter your email address" v-model="email" required>
-        <br>
-        <input class="sign" type="password" placeholder="Password" v-model="password" required>
-        <br>
-        <button class="signIn" @click="onSubmitSignIn">Sign in</button>
-    </div>
+        <fieldset v-if="(logChoice === 'sign-in')">
+            <input class="inputs" type="email" placeholder="Enter your email address" v-model="email" required>
+            <br>
+            <input class="inputs" type="password" @keyup.enter="onSubmitSignIn" placeholder="Password" v-model="password" required>
+            <br>
+            <button class="submit-btn" @click="onSubmitSignIn">Sign in</button>
+        </fieldset>
 
-    <div v-if="(logChoice === 'new')">
-        <input  type="text" placeholder="Enter your First and Last name" v-model="userName" required>
-        <br>
-        <input type="email" placeholder="Enter your email address" v-model="email" required>
-        <br>
-        <input type="tel" placeholder="Enter your phone number" v-model="phone" required>
-        <br>
-        <input type="password" placeholder="Password" v-model="password" required>
-        <br>
-        <input type="password" placeholder="Confirm Password" v-model="password2" required>
-        <br>
-        <button @click="onSubmitNew">Register</button>
-    </div>
+        <div v-if="(logChoice === 'new')">
+            <input class="inputs" type="text" placeholder="Enter your First and Last name" v-model="userName" required>
+            <br>
+            <input class="inputs" type="email" placeholder="Enter your email address" v-model="email" required>
+            <br>
+            <input class="inputs" type="tel" placeholder="Enter your phone number" v-model="phone" required>
+            <br>
+            <input class="inputs" type="password" placeholder="Password" v-model="password" required>
+            <br>
+            <input class="inputs" type="password" @keyup.enter="onSubmitNew" placeholder="Confirm Password" v-model="password2" required>
+            <br>
+            <button class="submit-btn" @click="onSubmitNew">Register</button>
+        </div>
+    </fieldset>
 </template>
 
 <style>
 body {
-    font-size: 20px;
-    margin: 0px 10em 0px 10em;
+    font-size: 1rem;
+    margin: 1rem 10rem 1rem 10rem;
     padding: 0;
     font-family: Roboto;
-    background-color: #F2F4FC;
+    color: rgb(177, 109, 109);
+
 }
-.sign {
-    width: 400px;
-    background-color: rgb(254, 224, 230);
+
+.inputs {
+    width: 100%;
+    background-color: rgb(242, 212, 218);
     border: none;
 }
-.signIn{
-    width: 400px;
-    background-color: rgb(232, 181, 189);
+
+.submit-btn {
+    width: 100%;
+    background-color: rgb(212, 166, 173);
     border: none;
     color: rgb(130, 16, 67);
-    
 
 }
-
 </style>

@@ -4,21 +4,21 @@ const taskStore = useTaskStore();
 import { onMounted } from 'vue'
 
 
-const removeTask = (task) => {
+const removeTask = async (task) => {
     if (Window.confirm("Are you sure you want to delete this task ?")) {
-        taskStore.deleteTask(task.id);
-        taskStore.fetchTasks();
+        await taskStore.deleteTask(task.id);
+        await taskStore.fetchTasks();
     }
 }
 
 const checkDeadline = (task) => {
     const deadline = new Date(task.deadline);
     console.log("Date : ", Date());
-    return (Date.now()>=deadline);
+    return (Date.now() >= deadline);
 }
 
-onMounted(() => {
-    taskStore.fetchTasks();
+onMounted(async () => {
+    await taskStore.fetchTasks();
 })
 </script>
 
@@ -35,13 +35,13 @@ onMounted(() => {
             <td>Edit</td>
         </thead>
 
-        <tr v-for="task in taskStore.tasks" >
+        <tr v-for="task in taskStore.tasks">
             <td>
                 <input type="checkbox" name="done" v-model="task.is_complete">
             </td>
             <td>
                 <input type="text" placeholder="Add a Task" v-model="task.title" required
-                :class="{finishedTask: task.is_complete}">
+                    :class="{ finishedTask: task.is_complete }">
             </td>
 
             <td>
@@ -55,7 +55,7 @@ onMounted(() => {
                 </select>
             </td>
             <td>
-                <input type="date" name="" v-model="task.deadline" :class="{'too-late': checkDeadline(task)}">
+                <input type="date" name="" v-model="task.deadline" :class="{ 'too-late': checkDeadline(task) }">
             </td>
             <td>
                 <img class="edit-remove" src="../icones/delete1.png">
@@ -74,31 +74,35 @@ onMounted(() => {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px;
-    background-color: rgb(245, 224, 232);
+    background-color: rgb(255, 255, 255);
+}
+
+input {
+    border-style: none;
+    text-decoration: none;
 }
 
 td {
     border-style: none;
-
-    text-align: center;
-    min-width: 100px;
+    color: rgba(99, 3, 90, 0.39);
 }
 
-tr {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-}
 
+table{
+    width:100%;
+}
 .edit-remove {
     width: 40px;
 }
 
-.finishedTask{
+.finishedTask {
     text-decoration: line-through;
 }
 
-.too-late{
+.too-late {
     background-color: red;
+}
+.header{
+    background-color: rgb(231, 224, 229);
 }
 </style>
