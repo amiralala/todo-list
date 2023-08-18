@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from '../views/Welcome.vue'
-import GeneraltasksUser from '@/views/GeneraltasksUser.vue'
+import GeneralTasksUser from '../views/GeneraltasksUser.vue'
 import TaskEdit from '../components/TaskEdit.vue'
  
 const router = createRouter({
@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/taskslist',
       name: 'taskslist',
-      component: GeneraltasksUser
+      component: GeneralTasksUser
     },
     {
       path: '/taskedit/:task_id?',
