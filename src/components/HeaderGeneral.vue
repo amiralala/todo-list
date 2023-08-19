@@ -15,8 +15,8 @@ const onSignOut = () => {
 
 <template>
     <nav>
-        <div><img class="logo-todou" src="../images/IMG_20230817_210139.jpg" alt=""></div>
-        <div v-if="userStore.user">{{ "Hello " + userStore.user.user.email }}</div>
+        <img class="logo-todou" src="../images/logo-tache.png" alt="logo">
+        <div class="hello" v-if="userStore.user">{{ "Hello " + userStore.user.user.email }}</div>
         <div  @click="userStore.signOutUser">
             <router-link class="outbutton" to="/">Log out</router-link>
         </div>
@@ -27,7 +27,7 @@ const onSignOut = () => {
 
 <style>
 .logo-todou {
-    width: 150px;
+    width: 20%;
 }
 
 nav {
@@ -35,14 +35,20 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    background-image: url(../images/fond3.jpg) ;
 }
 .outbutton{
     border: none;
-    background-color: rgb(176, 84, 170);
+    background-color: rgb(220, 151, 151);
     border-radius: 20PX;
-    color: rgb(239, 216, 238);
+    color: rgb(254, 239, 254);
     font-size: 1rem;
     padding: 0.5rem;
     text-decoration: none;
 }
+.hello{
+    font-size: 20PX;
+    color: rgb(133, 111, 3);
+}
+
 </style>

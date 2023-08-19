@@ -4,6 +4,8 @@ const router = useRouter();
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
+
+
 const userStore = useUserStore();
 
 const logChoice = ref("sign-in");
@@ -39,7 +41,7 @@ const onSubmitNew = () => {
     <fieldset>
         <div class=" signing-choice">
             <input type="radio" name="log-option" value="new" v-model="logChoice" />
-            <label for="new">New to "My Wise TODO List ? Join us !</label>
+            <label for="new">New to "My TODO List ? Join us !</label>
         </div>
         <div><input type="radio" name="log-option" value="sign-in" v-model="logChoice" checked />
             <label for="sign-in">Already a User? Sign In !</label>
@@ -67,14 +69,15 @@ const onSubmitNew = () => {
             <button class="submit-btn" @click="onSubmitNew">Register</button>
         </div>
     </fieldset>
+    
 </template>
 
 <style>
+
 body {
     font-size: 1rem;
     margin: 1rem 10rem 1rem 10rem;
     padding: 0;
-    font-family: Roboto;
     color: rgb(177, 109, 109);
 
 }
@@ -83,6 +86,7 @@ body {
     width: 100%;
     background-color: rgb(242, 212, 218);
     border: none;
+    
 }
 
 .submit-btn {

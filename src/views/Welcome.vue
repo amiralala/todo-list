@@ -1,11 +1,12 @@
 <script setup>
 import UserLogging from '../components/UserLogging.vue'
+import MyFooter from '../components/MyFooter.vue'
 </script>
 
 <template>
     <nav>
         <ul class="menu">
-            <li> <a href="features">Features</a></li>
+            <li><a href="features">Features</a></li>
             <li><a href="contact-us">Contact Us</a></li>
             <li><a href="learn-more">Learn more</a></li>
         </ul>
@@ -14,42 +15,46 @@ import UserLogging from '../components/UserLogging.vue'
     <div class="logo-todo"></div>
     <!-- <div><img class="logo-todo" src="../images/1692298872046.PNG" alt=""></div> -->
     <UserLogging></UserLogging>
-    <div class="deskpicture">" "</div>
-    <p class="desktext">"Easily organize your task for free"</p>
+    <div class="deskpicture">"Easily organize your tasks for free"<p class="quote"></p>
+    </div>
 
-    <section>
-        <p>Already one user</p>
-        <p>Join me!</p>
-        <p>Simply powerful, you'll have everything neatly organized</p>
+
+    <section class="green-section">
+        <p>Already 4 users</p>
+        <p>Join us!</p>
+        <q class="simply">"Simply powerful, you'll have everything neatly organized"</q><br>
+        <q class="dojacat">Doja Cat</q>
     </section>
+    <MyFooter></MyFooter>
 </template>
 
 <style>
 .menu {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     list-style-type: none;
-
+    /* width: 50%; */
+    width:100%;
 }
-
-/* .menu {
-  color: rgb(25, 0, 255);
-} */
 
 .menu a {
     text-decoration: none;
     color: rgb(177, 109, 109);
     font-weight: bold;
+    margin-right:2%;
+    white-space: nowrap;
+    overflow:hidden;
 }
 
 .logo-todo {
     /* width: 300px; */
-    background-image: url(../images/1692298872046.PNG);
-    background-size:contain;
+    background-image: url(../images/logo-tache.PNG);
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
-    min-height:20em;
+    min-height: 10rem;
 }
 
 .deskpicture {
@@ -57,28 +62,31 @@ import UserLogging from '../components/UserLogging.vue'
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    filter: blur(4px);
     font-size: 2em;
     text-align: center;
     width: 100%;
     height: 10em;
-    position:relative;
-    
-}
-
-.desktext {
     position: relative;
-    top: -10em;
-    left: 25%;
-    /* text-align: center; */
-    color: rgb(46, 170, 127);
-    font-size: 30px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif ;
-
+    color: rgb(28, 195, 142);
 }
-section{
+
+.green-section {
     background-color: rgb(195, 245, 228);
     color: rgb(189, 189, 24);
-    
+    text-align: center;
+    padding: 0.5em;
+    margin: 0.5em;
 }
+.simply{
+    font-style: italic;
+    font-family:'Times New Roman', Times, serif;
+}
+.dojacat{
+   font-style: italic;
+   font-size: 13px; 
+   font-family:'Times New Roman', Times, serif;
+   
+}
+
+
 </style>

@@ -10,13 +10,12 @@ export const useTaskStore = defineStore("taskStore", () => {
       .from('tasks')
       .select()
 
-    if (error) console.log("Error: ", error);
+    if (error) { console.log(error); }
     else tasks.value = data;
     console.log("tasks: ", tasks.value);
   }
   const insertTask = async (title, task_type, is_complete, priority, deadline) => {
     let rowData = {};
-    rowData.user_id = "a83fca4c-d8c5-4490-8de1-cdca8372fcc0";
     rowData.title = title;
     rowData.task_type = task_type;
     rowData.is_complete = is_complete;
@@ -28,8 +27,7 @@ export const useTaskStore = defineStore("taskStore", () => {
       .from('tasks')
       .insert(rowData)
 
-    if (error) console.log("Error: ", error);
-
+    if (error) { console.log(error); }
   }
 
   const deleteTask = async (idToDelete) => {
@@ -39,7 +37,7 @@ export const useTaskStore = defineStore("taskStore", () => {
       .delete()
       .eq('id', idToDelete);
 
-    if (error) console.log("Error: ", error);
+    if (error) { console.log(error); }
   }
 
   const changeTask = async (task) => {
@@ -47,7 +45,7 @@ export const useTaskStore = defineStore("taskStore", () => {
       .from('tasks')
       .update(task)
       .eq('id', task.id)
-      if (error) console.log("Error: ", error);
+    if (error) { console.log(error); }
   }
   return { tasks, fetchTasks, insertTask, deleteTask, changeTask }
 })

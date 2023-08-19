@@ -5,7 +5,7 @@ import { onMounted } from 'vue'
 
 
 const removeTask = async (task) => {
-    if (Window.confirm("Are you sure you want to delete this task ?")) {
+    if (window.confirm("Are you sure you want to delete this task ?")) {
         await taskStore.deleteTask(task.id);
         await taskStore.fetchTasks();
     }
@@ -35,7 +35,7 @@ onMounted(async () => {
             <td>Edit</td>
         </thead>
 
-        <tr v-for="task in taskStore.tasks">
+        <tr v-for="task in taskStore.tasks" class="table-row">
             <td>
                 <input type="checkbox" name="done" v-model="task.is_complete">
             </td>
@@ -58,7 +58,7 @@ onMounted(async () => {
                 <input type="date" name="" v-model="task.deadline" :class="{ 'too-late': checkDeadline(task) }">
             </td>
             <td>
-                <img class="edit-remove" src="../icones/delete1.png">
+                <img class="edit-remove" @click=removeTask(task) src="../icones/delete1.png">
             </td>
             <td>
                 <router-link :to="{ name: 'taskedit', params: { task_id: task.id } }">
@@ -87,10 +87,14 @@ td {
     color: rgba(99, 3, 90, 0.39);
 }
 
-
-table{
-    width:100%;
+table {
+    width: 100%;
 }
+
+table tr:hover {
+    scale: 105%;
+}
+
 .edit-remove {
     width: 40px;
 }
@@ -102,7 +106,8 @@ table{
 .too-late {
     background-color: red;
 }
-.header{
+
+.header {
     background-color: rgb(231, 224, 229);
 }
 </style>
