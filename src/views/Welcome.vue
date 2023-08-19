@@ -15,7 +15,8 @@ import MyFooter from '../components/MyFooter.vue'
     <div class="logo-todo"></div>
     <!-- <div><img class="logo-todo" src="../images/1692298872046.PNG" alt=""></div> -->
     <UserLogging></UserLogging>
-    <div class="deskpicture">"Easily organize your tasks for free"<p class="quote"></p>
+    <div class="deskpicture">
+        <p class="quote">"Easily organize your tasks for free"</p>
     </div>
 
 
@@ -34,16 +35,16 @@ import MyFooter from '../components/MyFooter.vue'
     flex-direction: row;
     justify-content: space-between;
     list-style-type: none;
-    width:90%;
+    width: 90%;
 }
 
 .menu a {
     text-decoration: none;
     color: rgb(177, 109, 109);
     font-weight: bold;
-    margin-right:2%;
+    margin-right: 2%;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .logo-todo {
@@ -62,11 +63,16 @@ import MyFooter from '../components/MyFooter.vue'
     background-position: center;
     background-size: cover;
     font-size: 2em;
-    text-align: center;
     width: 100%;
     height: 10em;
-    position: relative;
     color: rgb(28, 195, 142);
+    display:flex;
+    align-items:end;
+    justify-content: center;
+
+}
+.quote{
+    text-align: center;
 }
 
 .green-section {
@@ -76,16 +82,16 @@ import MyFooter from '../components/MyFooter.vue'
     padding: 0.5em;
     margin: 0.5em;
 }
-.simply{
+
+.simply {
     font-style: italic;
-    font-family:'Times New Roman', Times, serif;
-}
-.dojacat{
-   font-style: italic;
-   font-size: 13px; 
-   font-family:'Times New Roman', Times, serif;
-   
+    font-family: 'Times New Roman', Times, serif;
 }
 
+.dojacat {
+    font-style: italic;
+    font-size: 13px;
+    font-family: 'Times New Roman', Times, serif;
 
+}
 </style>
