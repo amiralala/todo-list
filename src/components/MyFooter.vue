@@ -12,5 +12,6 @@
 <style>
 .signature{
     width: 25%;
+    float: left;
 }
 </style>

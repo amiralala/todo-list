@@ -97,7 +97,10 @@ table tr:hover {
 
 .edit-remove {
     width: 40px;
+
 }
+
+.edit-remove:hover{cursor: pointer;}
 
 .finishedTask {
     text-decoration: line-through;

@@ -34,8 +34,7 @@ import MyFooter from '../components/MyFooter.vue'
     flex-direction: row;
     justify-content: space-between;
     list-style-type: none;
-    /* width: 50%; */
-    width:100%;
+    width:90%;
 }
 
 .menu a {

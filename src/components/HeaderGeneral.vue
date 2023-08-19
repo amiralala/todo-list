@@ -33,9 +33,10 @@ const onSignOut = () => {
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-image: url(../images/fond3.jpg) ;
+    background-image: 90%;
 }
 .outbutton{
     border: none;

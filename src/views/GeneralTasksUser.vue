@@ -88,4 +88,8 @@ fieldset {
     color: rgb(24, 8, 1);
     margin-left: 1%;
 }
+
+.display-select{
+    margin-bottom: 2%;
+}
 </style>

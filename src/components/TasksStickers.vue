@@ -97,4 +97,5 @@ body {
 .header {
     background-color: rgb(231, 224, 229);
 }
+.edit-remove:hover{cursor: pointer;}
 </style>

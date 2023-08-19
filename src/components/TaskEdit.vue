@@ -20,11 +20,8 @@ const getTask = () => {
 }
 
 const updateTask = async () => {
-    console.log("update");
-    if (window.confirm("Are you sure you want to make changes on this task?")) {
-        await taskStore.changeTask(task.value);
-        router.push('/taskslist');
-    }
+    await taskStore.changeTask(task.value);
+    router.push('/taskslist');
 }
 
 onMounted(() => {
@@ -53,8 +50,12 @@ watch(
             <option value="medium">Think of it!</option>
             <option value="low">Can wait..</option>
         </select>
-
-        <button class="update-button" @click="updateTask">Update</button>
+        <div class="buttons-container">
+            <button class="update-button" @click="updateTask">Update</button>
+            <button class="update-button">
+                <RouterLink to="/taskslist">Cancel</RouterLink>
+            </button>
+        </div>
     </fieldset>
 </template>
 
@@ -77,12 +78,18 @@ watch(
     align-self: stretch;
 }
 
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .update-button {
     background-color: rgb(224, 191, 206);
     border-style: hidden;
     border-radius: 15px;
     color: rgb(24, 8, 1);
-    margin-bottom: 1%;
+    width: 40%
 }
 
 .first-line {
