@@ -14,8 +14,9 @@ export const useTaskStore = defineStore("taskStore", () => {
     else tasks.value = data;
     console.log("tasks: ", tasks.value);
   }
-  const insertTask = async (title, task_type, is_complete, priority, deadline) => {
+  const insertTask = async (userId, title, task_type, is_complete, priority, deadline) => {
     let rowData = {};
+    rowData.user_id = userId;
     rowData.title = title;
     rowData.task_type = task_type;
     rowData.is_complete = is_complete;

@@ -40,7 +40,7 @@ import MyFooter from '../components/MyFooter.vue'
 
 .menu a {
     text-decoration: none;
-    color: rgb(177, 109, 109);
+    color: rgb(167, 7, 58);
     font-weight: bold;
     margin-right: 2%;
     white-space: nowrap;

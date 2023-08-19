@@ -22,7 +22,7 @@ const onSubmitSignIn = async () => {
     router.push('/taskslist')
 }
 
-const onSubmitNew = () => {
+const onSubmitNew = async () => {
     if (password.value.length < 6) {
         window.alert("Password should be 6 characters minimum");
     }
@@ -30,7 +30,7 @@ const onSubmitNew = () => {
         window.alert("Passwords do not match");
     }
     else {
-        userStore.createNewUser(email.value, password.value);
+        await userStore.createNewUser(email.value, password.value);
         router.push("/taskslist")
         console.log("after creation", userStore.user);
     }

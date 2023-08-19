@@ -19,8 +19,12 @@ const displayType = ref("table")
 
 const updateList = () => { taskStore.fetchTasks(); }
 const addTask = async () => {
-    await taskStore.insertTask(title.value, taskType.value, false, priority.value, deadLine.value);
+    await taskStore.insertTask(userStore.user.user.id, title.value, taskType.value, false, priority.value, deadLine.value);
     await taskStore.fetchTasks();
+    title.value="";
+    taskType.value="";
+    priority.value="medium";
+    deadLine.value="";
 };
 </script>
 
@@ -89,7 +93,7 @@ fieldset {
     margin-left: 1%;
 }
 
-.display-select{
+.display-select {
     margin-bottom: 2%;
 }
 </style>
