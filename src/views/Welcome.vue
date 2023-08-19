@@ -49,7 +49,7 @@ import MyFooter from '../components/MyFooter.vue'
 
 .logo-todo {
     /* width: 300px; */
-    background-image: url(../images/logo-tache.PNG);
+    background-image: url(../images/logo-tache.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
