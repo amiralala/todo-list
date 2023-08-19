@@ -91,8 +91,8 @@ table {
     width: 100%;
 }
 
-table tr:hover {
-    scale: 105%;
+tr:hover{
+    background-color:rgb(231, 224, 229);
 }
 
 .edit-remove {
