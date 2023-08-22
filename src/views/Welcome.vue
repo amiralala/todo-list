@@ -21,10 +21,17 @@ import MyFooter from '../components/MyFooter.vue'
 
 
     <section class="green-section">
-        <p>Already 4 users</p>
-        <p>Join us!</p>
+        <p>Already 1 user</p>
+        <p>Join me!</p>
         <q class="simply">"Simply powerful, you'll have everything neatly organized"</q><br>
-        <q class="dojacat">Doja Cat</q>
+        <q class="dojacat">My mom</q>
+    </section>
+    <section class="l-picture">
+
+        <img class="mobile" src="../images/imagenius.png" alt="picture">
+        <q class="quote2">Easy, User-friendly, <br> All your tasks at a glance!</q>
+
+
     </section>
     <MyFooter></MyFooter>
 </template>
@@ -66,12 +73,13 @@ import MyFooter from '../components/MyFooter.vue'
     width: 100%;
     height: 10em;
     color: rgb(28, 195, 142);
-    display:flex;
-    align-items:end;
+    display: flex;
+    align-items: end;
     justify-content: center;
 
 }
-.quote{
+
+.quote {
     text-align: center;
 }
 
@@ -93,5 +101,16 @@ import MyFooter from '../components/MyFooter.vue'
     font-size: 13px;
     font-family: 'Times New Roman', Times, serif;
 
+}
+
+.l-picture {
+    background-color: rgb(253, 249, 201);
+    display: flex;
+    align-items: center;
+}
+
+.mobile {
+    width: 80%;
+    margin:2%;
 }
 </style>
