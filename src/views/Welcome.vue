@@ -22,10 +22,10 @@ import MyFooter from '../components/MyFooter.vue'
     <section class="green-section">
         <p>Already 1 user</p>
         <p>Join me!</p>
-        <q class="simply">"Simply powerful, you'll have everything neatly organized"</q><br>
+        <q class="simply">Simply powerful, you'll have everything neatly organized</q><br>
         <q class="dojacat">My mom</q>
     </section>
-    
+
     <section class="l-picture">
         <img class="mobile" src="../images/imagenius.png" alt="picture">
         <q class="quote2">Easy, User-friendly, <br> All your tasks at a glance!</q>
