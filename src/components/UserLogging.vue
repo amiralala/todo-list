@@ -4,8 +4,6 @@ const router = useRouter();
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
-
-
 const userStore = useUserStore();
 
 const logChoice = ref("sign-in");
@@ -18,8 +16,9 @@ const password2 = ref("");
 const onSubmitSignIn = async () => {
     await userStore.signInUser(email.value, password.value);
     console.log("depuis page sign in ", userStore.user);
-
-    router.push('/taskslist')
+    if (userStore.user) {
+        router.push('/taskslist');
+    }
 }
 
 const onSubmitNew = async () => {
@@ -31,8 +30,10 @@ const onSubmitNew = async () => {
     }
     else {
         await userStore.createNewUser(email.value, password.value);
-        router.push("/taskslist")
-        console.log("after creation", userStore.user);
+        if (userStore.user) {
+            router.push("/taskslist")
+            console.log("after creation", userStore.user);
+        }
     }
 }
 </script>
@@ -50,7 +51,8 @@ const onSubmitNew = async () => {
         <fieldset v-if="(logChoice === 'sign-in')">
             <input class="inputs" type="email" placeholder="Enter your email address" v-model="email" required>
             <br>
-            <input class="inputs" type="password" @keyup.enter="onSubmitSignIn" placeholder="Password" v-model="password" required>
+            <input class="inputs" type="password" @keyup.enter="onSubmitSignIn" placeholder="Password" v-model="password"
+                required>
             <br>
             <button class="submit-btn" @click="onSubmitSignIn">Sign in</button>
         </fieldset>
@@ -64,29 +66,26 @@ const onSubmitNew = async () => {
             <br>
             <input class="inputs" type="password" placeholder="Password" v-model="password" required>
             <br>
-            <input class="inputs" type="password" @keyup.enter="onSubmitNew" placeholder="Confirm Password" v-model="password2" required>
+            <input class="inputs" type="password" @keyup.enter="onSubmitNew" placeholder="Confirm Password"
+                v-model="password2" required>
             <br>
             <button class="submit-btn" @click="onSubmitNew">Register</button>
         </div>
     </fieldset>
-    
 </template>
 
 <style>
-
 body {
     font-size: 1rem;
     margin: 1rem 10rem 1rem 10rem;
     padding: 0;
     color: rgb(177, 109, 109);
-
 }
 
 .inputs {
     width: 100%;
     background-color: rgb(242, 212, 218);
     border: none;
-    
 }
 
 .submit-btn {
@@ -94,6 +93,5 @@ body {
     background-color: rgb(212, 166, 173);
     border: none;
     color: rgb(130, 16, 67);
-
 }
 </style>

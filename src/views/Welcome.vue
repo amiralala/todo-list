@@ -10,8 +10,8 @@ import MyFooter from '../components/MyFooter.vue'
             <li><a href="contact-us">Contact Us</a></li>
             <li><a href="learn-more">Learn more</a></li>
         </ul>
-
     </nav>
+
     <div class="logo-todo"></div>
     <!-- <div><img class="logo-todo" src="../images/1692298872046.PNG" alt=""></div> -->
     <UserLogging></UserLogging>
@@ -19,19 +19,16 @@ import MyFooter from '../components/MyFooter.vue'
         <p class="quote">"Easily organize your tasks for free"</p>
     </div>
 
-
     <section class="green-section">
         <p>Already 1 user</p>
         <p>Join me!</p>
         <q class="simply">"Simply powerful, you'll have everything neatly organized"</q><br>
         <q class="dojacat">My mom</q>
     </section>
+    
     <section class="l-picture">
-
         <img class="mobile" src="../images/imagenius.png" alt="picture">
         <q class="quote2">Easy, User-friendly, <br> All your tasks at a glance!</q>
-
-
     </section>
     <MyFooter></MyFooter>
 </template>
@@ -84,8 +81,8 @@ import MyFooter from '../components/MyFooter.vue'
 }
 
 .green-section {
-    background-color: rgb(195, 245, 228);
-    color: rgb(189, 189, 24);
+    background-color: rgb(208, 251, 237);
+    color: rgb(173, 173, 24);
     text-align: center;
     padding: 0.5em;
     margin: 0.5em;
@@ -111,6 +108,6 @@ import MyFooter from '../components/MyFooter.vue'
 
 .mobile {
     width: 80%;
-    margin:2%;
+    margin: 2%;
 }
 </style>
