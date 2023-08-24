@@ -25,10 +25,12 @@ onMounted(async () => {
 
 <template>
     <div class="stickers-container">
-        <div v-for="task in taskStore.tasks" class="sticker" :class="{ 'finishedTask': task.is_complete }">
-            <div>{{ task.title }} </div>
+        <div v-for="task in taskStore.tasks" class="sticker">
+            <div :class="{ 'finishedTask': task.is_complete }">
+                {{ task.title }}
+            </div>
             <div> {{ task.type }}</div>
-            <select name=" priority" v-model="task.priority">
+            <select name=" priority" v-model="task.priority" readonly>
                 <option value="high">Emergency</option>
                 <option value="medium">Think of it!</option>
                 <option value="low">Can wait..</option>
@@ -40,7 +42,7 @@ onMounted(async () => {
             <div>
                 <img class="edit-remove" @click="removeTask" src="../icones/delete1.png">
                 <router-link :to="{ name: 'taskedit', params: { task_id: task.id } }">
-                    <img class="edit-remove" src="../icones/edit1.png" @click=editTask(task)>
+                    <img class="edit-remove" src="../icones/edit1.png">
                 </router-link>
             </div>
         </div>
@@ -86,16 +88,17 @@ body {
 }
 
 .finishedTask {
-    text-decoration: none;
+    text-decoration: line-through;
 }
 
 .too-late {
     color: red;
-    background-color: transparent;
 }
 
 .header {
     background-color: rgb(231, 224, 229);
 }
-.edit-remove:hover{cursor: pointer;}
-</style>
+
+.edit-remove:hover {
+    cursor: pointer;
+}</style>

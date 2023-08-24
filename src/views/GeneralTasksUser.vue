@@ -15,16 +15,16 @@ const taskType = ref("");
 const priority = ref("medium");
 const deadLine = ref("");
 
-const displayType = ref("table")
+const displayType = ref("list")
 
 const updateList = () => { taskStore.fetchTasks(); }
 const addTask = async () => {
     await taskStore.insertTask(userStore.user.user.id, title.value, taskType.value, false, priority.value, deadLine.value);
     await taskStore.fetchTasks();
-    title.value="";
-    taskType.value="";
-    priority.value="medium";
-    deadLine.value="";
+    title.value = "";
+    taskType.value = "";
+    priority.value = "medium";
+    deadLine.value = "";
 };
 </script>
 
@@ -34,8 +34,7 @@ const addTask = async () => {
 
     <fieldset>
         <legend>New Task</legend>
-
-        <div class="bulles">
+        <form class="bulles">
             <input class="new-input" type="text" placeholder="Task name" v-model="title" required>
             <input class="new-input" type="text" placeholder="Task type" v-model="taskType">
             <input class="new-input" type="date" name="" v-model="deadLine">
@@ -45,17 +44,17 @@ const addTask = async () => {
                 <option value="low">Can wait..</option>
             </select>
             <button class="addbutton" @click="addTask">Add</button>
-        </div>
+        </form>
     </fieldset>
 
     <br>
     <hr>
     <label for="display">Display Style : </label>
     <select class="display-select" name="display" v-model="displayType">
-        <option value="table">List</option>
-        <option value="stickers">Stickers</option>
+        <option value="list">List</option>
+        <option value="stickers">Cards</option>
     </select>
-    <TasksList v-if="displayType === 'table'"></TasksList>
+    <TasksList v-if="displayType === 'list'"></TasksList>
     <TasksStickers v-if="displayType === 'stickers'"></TasksStickers>
     <myFooter></myFooter>
 </template>

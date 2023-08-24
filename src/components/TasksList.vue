@@ -26,8 +26,9 @@ onMounted(async () => {
 <template>
     <table>
         <thead class="header">
-            <td>Done</td>
+            
             <td>Title</td>
+            <td>Done</td>
             <td>Type</td>
             <td>Priority</td>
             <td>Deadline</td>
@@ -36,33 +37,31 @@ onMounted(async () => {
         </thead>
 
         <tr v-for="task in taskStore.tasks" class="table-row">
-            <td>
-                <input type="checkbox" name="done" v-model="task.is_complete">
+            <td :class="{ finishedTask: task.is_complete }">
+                {{ task.title }}
             </td>
             <td>
-                <input type="text" placeholder="Add a Task" v-model="task.title" required
-                    :class="{ finishedTask: task.is_complete }">
-            </td>
-
-            <td>
-                <input type="text" placeholder="Task Type" v-model="task.task_type">
+                <input type="checkbox" name="done" v-model="task.is_complete" readonly>
             </td>
             <td>
-                <select name="priority" v-model="task.priority">
+                {{ task.task_type }}
+            </td>
+            <td>
+                <select name="priority" v-model="task.priority" readonly>
                     <option value="high">Emergency</option>
                     <option value="medium">Think of it!</option>
                     <option value="low">Can wait..</option>
                 </select>
             </td>
-            <td>
-                <input type="date" name="" v-model="task.deadline" :class="{ 'too-late': checkDeadline(task) }">
+            <td :class="{ 'too-late': checkDeadline(task) }">
+                {{ task.deadline }}
             </td>
             <td>
                 <img class="edit-remove" @click=removeTask(task) src="../icones/delete1.png">
             </td>
             <td>
                 <router-link :to="{ name: 'taskedit', params: { task_id: task.id } }">
-                    <img class="edit-remove" src="../icones/edit1.png" @click=editTask(task)>
+                    <img class="edit-remove" src="../icones/edit1.png">
                 </router-link>
             </td>
         </tr>
@@ -84,15 +83,15 @@ input {
 
 td {
     border-style: none;
-    color: rgba(99, 3, 90, 0.39);
+    color: rgb(64, 3, 58);
 }
 
 table {
     width: 100%;
 }
 
-tr:hover{
-    background-color:rgb(231, 224, 229);
+tr:hover {
+    background-color: rgb(231, 224, 229);
 }
 
 .edit-remove {
@@ -100,14 +99,16 @@ tr:hover{
 
 }
 
-.edit-remove:hover{cursor: pointer;}
+.edit-remove:hover {
+    cursor: pointer;
+}
 
 .finishedTask {
     text-decoration: line-through;
 }
 
 .too-late {
-    background-color: red;
+    color: red;
 }
 
 .header {

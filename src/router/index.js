@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Welcome from '../views/Welcome.vue'
 import GeneralTasksUser from '../views/GeneralTasksUser.vue'
-import TaskEdit from '../components/TaskEdit.vue'
+import TaskEdit from '../views/TaskEdit.vue'
  
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

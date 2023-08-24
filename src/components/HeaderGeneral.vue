@@ -18,7 +18,7 @@ const onSignOut = () => {
         <img class="logo-todou" src="../images/logo-tache.png" alt="logo">
         <div class="hello" v-if="userStore.user">{{ "Hello " + userStore.user.user.email }}</div>
         <div  @click="userStore.signOutUser">
-            <router-link class="outbutton" to="/">Log out</router-link>
+            <router-link class="outbutton" to="/">Logout</router-link>
         </div>
     </nav>
 </template>
@@ -40,7 +40,7 @@ nav {
 }
 .outbutton{
     border: none;
-    background-color: rgb(220, 151, 151);
+    background-color: rgb(127, 54, 54);
     border-radius: 20PX;
     color: rgb(254, 239, 254);
     font-size: 1rem;
@@ -48,7 +48,7 @@ nav {
     text-decoration: none;
 }
 .hello{
-    font-size: 20PX;
+    font-size: 20px;
     color: rgb(133, 111, 3);
 }
 
