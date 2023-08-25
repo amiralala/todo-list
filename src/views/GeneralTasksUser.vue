@@ -17,7 +17,7 @@ const deadLine = ref("");
 
 const displayType = ref("list")
 
-const updateList = () => { taskStore.fetchTasks(); }
+// const updateList = () => { taskStore.fetchTasks(); }
 const addTask = async () => {
     await taskStore.insertTask(userStore.user.user.id, title.value, taskType.value, false, priority.value, deadLine.value);
     await taskStore.fetchTasks();
@@ -34,7 +34,7 @@ const addTask = async () => {
 
     <fieldset>
         <legend>New Task</legend>
-        <form class="bulles">
+        <div class="bulles">
             <input class="new-input" type="text" placeholder="Task name" v-model="title" required>
             <input class="new-input" type="text" placeholder="Task type" v-model="taskType">
             <input class="new-input" type="date" name="" v-model="deadLine">
@@ -44,13 +44,13 @@ const addTask = async () => {
                 <option value="low">Can wait..</option>
             </select>
             <button class="addbutton" @click="addTask">Add</button>
-        </form>
+        </div>
     </fieldset>
 
     <br>
     <hr>
     <label for="display">Display Style : </label>
-    <select class="display-select" name="display" v-model="displayType">
+    <select class="display-select" id="display" v-model="displayType">
         <option value="list">List</option>
         <option value="stickers">Cards</option>
     </select>

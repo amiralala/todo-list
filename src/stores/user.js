@@ -27,7 +27,9 @@ export const useUserStore = defineStore("userStore", () => {
     if (error) {
       window.alert(error);
     }
-    user.value = data;
+    else {
+      user.value = data;
+    }
     console.log("user signed in :", user.value);
     console.log(error);
   };
@@ -35,7 +37,7 @@ export const useUserStore = defineStore("userStore", () => {
   const signOutUser = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) window.alert("Error: ", error);
-    user.value={};
+    user.value = {};
   };
 
 

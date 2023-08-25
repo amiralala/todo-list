@@ -26,7 +26,6 @@ onMounted(async () => {
 <template>
     <table>
         <thead class="header">
-            
             <td>Title</td>
             <td>Done</td>
             <td>Type</td>

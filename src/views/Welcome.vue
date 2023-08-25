@@ -22,8 +22,8 @@ import MyFooter from '../components/MyFooter.vue'
     <section class="green-section">
         <p>Already 1 user</p>
         <p>Join me!</p>
-        <q class="simply">Simply powerful, you'll have everything neatly organized</q><br>
-        <q class="dojacat">My mom</q>
+        <q class="simply">Simply powerful, you'll have everything neatly organized</q>
+        <span class="dojacat"> (My mom)</span>
     </section>
 
     <section class="l-picture">

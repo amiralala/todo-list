@@ -23,12 +23,12 @@ export const useTaskStore = defineStore("taskStore", () => {
     rowData.priority = priority;
     rowData.deadline = deadline;
 
-    console.log(rowData);
+    console.log("to be inserted:", rowData);
     const { error } = await supabase
       .from('tasks')
       .insert(rowData)
 
-    if (error) { console.log(error); }
+    if (error) { console.log(error);}
   }
 
   const deleteTask = async (idToDelete) => {
