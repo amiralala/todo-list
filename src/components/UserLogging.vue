@@ -57,7 +57,7 @@ const onSubmitNew = async () => {
             <button class="submit-btn" @click="onSubmitSignIn">Sign in</button>
         </fieldset>
 
-        <div v-if="(logChoice === 'new')">
+        <fieldset v-if="(logChoice === 'new')">
             <input class="inputs" type="text" placeholder="Enter your First and Last name" v-model="userName" required>
             <br>
             <input class="inputs" type="email" placeholder="Enter your email address" v-model="email" required>
@@ -70,7 +70,7 @@ const onSubmitNew = async () => {
                 v-model="password2" required>
             <br>
             <button class="submit-btn" @click="onSubmitNew">Register</button>
-        </div>
+        </fieldset>
     </fieldset>
 </template>
 
